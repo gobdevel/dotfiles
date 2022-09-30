@@ -1,0 +1,17 @@
+# TMUX RELATED
+alias tnew="tmux new -s "
+alias ta="tmux attach-session -t "
+
+
+# Git Related
+alias gla="git log --oneline --all --decorate --graph"
+alias glg="git log --oneline --decorate --graph"
+alias glo="git log --oneline"
+alias gs="git checkout "
+
+
+# Apstra
+alias devc="./tools/start_a_dev_container -n "
+
+alias slicercli_update='docker pull docker-registry:5000/slicercli:latest'
+alias slicercli='docker run --rm -i -t -v $HOME:/root  -v $PWD:/project docker-registry:5000/slicercli /usr/local/bin/slicercli -i'

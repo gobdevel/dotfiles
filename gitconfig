@@ -1,0 +1,7 @@
+[user]
+	email = gobindp@apstra.com
+	name = Gobind Prasad
+[pull]
+	rebase = true
+[core]
+	editor = vim --nofork
