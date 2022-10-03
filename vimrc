@@ -154,6 +154,7 @@ Plugin 'preservim/nerdtree'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'azabiong/vim-highlighter'
+Plugin 'nvie/vim-flake8'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -186,13 +187,12 @@ au BufNewFile,BufRead *.c,*.cpp,*.cc,*.h,*.tin,*.tac set autoindent
 au BufNewFile         *.c,*.cpp,*.cc,*.h,*.tin,*.tac set fileformat=unix
 au BufRead,BufNewFile *.c,*.cpp,*.cc,*.h,*.tin,*.tac let b:comment_leader = '/* '
 
-au BufRead,BufNewFile *.tin,*.tac set filetype=cpp
-
 "js, html, css indentation
 au BufNewFile,BufRead *.js,*.html,*.css set tabstop=2
 au BufNewFile,BufRead *.js,*.html,*.css set softtabstop=2
 au BufNewFile,BufRead *.js,*.html,*.css set shiftwidth=2
 
+au BufRead,BufNewFile *.tin,*.tac set filetype=cpp
 
 "split navigtions
 nnoremap <C-J> <C-W><C-J>
@@ -261,6 +261,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'passive_filetypes': ['cpp'] }
 
 " NERDTree
 nnoremap <S-x> :NERDTreeToggle<CR>

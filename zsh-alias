@@ -1,7 +1,7 @@
 # TMUX RELATED
 alias tnew="tmux new -s "
 alias ta="tmux attach-session -t "
-
+alias tls="tmux ls"
 
 # Git Related
 alias gla="git log --oneline --all --decorate --graph"
@@ -9,9 +9,33 @@ alias glg="git log --oneline --decorate --graph"
 alias glo="git log --oneline"
 alias gs="git checkout "
 
+# Find related
+alias pfind='find . -name "*.py" | xargs grep --color -i '
+alias tfind='find . -name "*.tac" | xargs grep --color -i '
+alias cfind='find . -name "*.cpp" | xargs grep --color -i '
+alias hfind='find . -name "*.h" | xargs grep --color -i '
 
 # Apstra
-alias devc="./tools/start_a_dev_container -n "
+alias scli_update='docker pull docker-registry:5000/slicercli:latest'
+alias scli='docker run --rm -i -t -v $HOME:/root  -v $PWD:/project docker-registry:5000/slicercli /usr/local/bin/slicercli -i'
+alias lsdev='docker ps -a | grep aos-dev | awk "{print \$(NF)}"'
 
-alias slicercli_update='docker pull docker-registry:5000/slicercli:latest'
-alias slicercli='docker run --rm -i -t -v $HOME:/root  -v $PWD:/project docker-registry:5000/slicercli /usr/local/bin/slicercli -i'
+#function lsdev() {
+#	docker ps -a | grep aos-dev | awk '{print $(NF)}'
+#}
+
+# Docker function
+function start_dev {
+	curr_dir=$(basename $(pwd))
+	if [ "$curr_dir" != "leblon" ]; then
+		echo "Must run from leblon directory"
+		return 1
+	fi
+
+	if [ -z "$1" ]; then
+		echo "Usage start_dev <name>"
+		return 1
+	else
+		./tools/start_aos_dev_container --docker-run-options="-v $HOME/Apstra/tacc_bootcamp:/bootcamp" -n $1
+	fi
+}
