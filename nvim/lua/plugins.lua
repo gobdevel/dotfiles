@@ -34,7 +34,8 @@ return require('packer').startup(function(use)
 	-- Theme / Colorscheme
 	use "savq/melange"
 	use 'jacoborus/tender.vim'
-	use 'ellisonleao/gruvbox.nvim'
+	use 'sainnhe/gruvbox-material'
+
 
 	-- Generate Autopairs
 	use "windwp/nvim-autopairs"

@@ -27,8 +27,8 @@ alias lsdev='docker ps -a | grep aos-dev | awk "{print \$(NF)}"'
 # Docker function
 function start_dev {
 	curr_dir=$(basename $(pwd))
-	if [ "$curr_dir" != "leblon" ]; then
-		echo "Must run from leblon directory"
+	if [ "$curr_dir" != "leblon" -a "$curr_dir" != "aos" ]; then
+		echo "Must run from leblon or aos directory"
 		return 1
 	fi
 

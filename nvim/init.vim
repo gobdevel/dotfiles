@@ -119,10 +119,6 @@ set backspace=indent,eol,start
 
 let python_highlight_all=1
 
-" Colorscheme setting 
-set background=dark
-set termguicolors
-colorscheme gruvbox
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN MANAGER CONFIGS
@@ -380,3 +376,16 @@ map <S-x> :NvimTreeToggle<cr>
 
 " Open Terminal
 map<S-t> :ToggleTerm size=20 dir=${CWD} direction=horizontal<cr>
+
+" Colorscheme 
+if has('termguicolors')
+	set termguicolors
+endif
+set background=dark
+let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_better_performance = 1
+let g:gruvbox_material_disable_italic_comment = 0
+let g:gruvbox_material_enable_bold = 1
+let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_transparent_background = 0
+colorscheme gruvbox-material
