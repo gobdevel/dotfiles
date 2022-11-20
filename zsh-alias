@@ -20,6 +20,11 @@ alias scli_update='docker pull docker-registry:5000/slicercli:latest'
 alias scli='docker run --rm -i -t -v $HOME:/root  -v $PWD:/project docker-registry:5000/slicercli /usr/local/bin/slicercli -i'
 alias lsdev='docker ps -a | grep aos-dev | awk "{print \$(NF)}"'
 
+
+# CMAKE
+cmaked='cmake -DCMAKE_BUILD_TYPE=Debug '
+cmaker='cmake -DCMAKE_BUILD_TYPE=Release '
+
 #function lsdev() {
 #	docker ps -a | grep aos-dev | awk '{print $(NF)}'
 #}
@@ -37,5 +42,20 @@ function start_dev {
 		return 1
 	else
 		./tools/start_aos_dev_container --docker-run-options="-v $HOME/Apstra/tacc_bootcamp:/bootcamp" -n $1
+	fi
+}
+
+function start_dev_local {
+	curr_dir=$(basename $(pwd))
+	if [ "$curr_dir" != "leblon" -a "$curr_dir" != "aos" ]; then
+		echo "Must run from leblon or aos directory"
+		return 1
+	fi
+
+	if [[ $# -ne 2 ]]; then
+		echo "Usage start_dev <name> <image:tag>"
+		return 1
+	else
+		./tools/start_aos_dev_container --docker-run-options="-v $HOME/Apstra/tacc_bootcamp:/bootcamp" -n $1 --docker-image="$2"
 	fi
 }

@@ -237,7 +237,7 @@ require("toggleterm").setup{}
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
 
@@ -377,7 +377,7 @@ map <S-x> :NvimTreeToggle<cr>
 " Open Terminal
 map<S-t> :ToggleTerm size=20 dir=${CWD} direction=horizontal<cr>
 
-" Colorscheme 
+" Colorscheme
 if has('termguicolors')
 	set termguicolors
 endif
