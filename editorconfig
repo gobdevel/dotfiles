@@ -10,13 +10,13 @@ indent_style = tab
 indent_size = 4
 trim_trailing_whitespace = true
 
-[{*.py,*.cpp,*.h,*.cc,*.c,*.tac,*.tin}]
+[{*.py,*.cpp,*.h,*.cc,*.c,*.tac,*.tin,*.itin}]
 charset = utf-8
 indent_style = space
 indent_size = 4
 max_line_length = 80
 
-[{*.json}]
+[{*.json,*.yaml,*.yml}]
 indent_style = space
 indent_size = 2
 
