@@ -1,4 +1,5 @@
 # TMUX RELATED
+alias tmux="env TERM=screen-256color tmux"
 alias tnew="tmux new -s "
 alias ta="tmux attach-session -t "
 alias tls="tmux ls"
