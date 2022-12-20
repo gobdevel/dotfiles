@@ -311,7 +311,7 @@ END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ","
 
-au BufRead,BufNewFile *.tin,*.tac set filetype=cpp
+au BufRead,BufNewFile *.tin,*.tac,*.itin set filetype=cpp
 
 "split navigtions
 nnoremap <C-J> <C-W><C-J>
