@@ -1,5 +1,14 @@
 {
-    "executionEnvironments": [
-        {"root": "project1"}
-    ]
+  "exclude": [
+    "build",
+    "*_build"
+  ],
+  "executionEnvironments": [
+    {
+      "root": ".",
+      "extraPaths": [
+        "aos/pytest"
+      ]
+    },
+  ]
 }
