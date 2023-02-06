@@ -46,7 +46,7 @@ function start_dev {
 		echo "Usage start_dev <name>"
 		return 1
 	else
-		./tools/start_aos_dev_container --docker-run-options="-v $HOME/Apstra/tacc_bootcamp:/bootcamp" -n $1
+		./tools/start_aos_dev_container --docker-run-options="-v $HOME/bootcamp/tacc_bootcamp:/bootcamp" -n $1
 	fi
 }
 
@@ -61,6 +61,6 @@ function start_dev_local {
 		echo "Usage start_dev <name> <image:tag>"
 		return 1
 	else
-		./tools/start_aos_dev_container --docker-run-options="-v $HOME/Apstra/tacc_bootcamp:/bootcamp" -n $1 --docker-image="$2"
+		./tools/start_aos_dev_container --docker-run-options="-v $HOME/bootcamp/tacc_bootcamp:/bootcamp" -n $1 --docker-image="$2"
 	fi
 }
