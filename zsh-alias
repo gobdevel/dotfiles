@@ -30,6 +30,10 @@ alias lsdev='docker ps -a | grep aos-dev | awk "{print \$(NF)}"'
 cmaked='cmake -DCMAKE_BUILD_TYPE=Debug '
 cmaker='cmake -DCMAKE_BUILD_TYPE=Release '
 
+# Server
+alias dev='ssh gobindp@gobindp.dev.dc1.apstra.com'
+alias dev2='ssh gobindp@10.24.128.76'
+
 #function lsdev() {
 #	docker ps -a | grep aos-dev | awk '{print $(NF)}'
 #}
