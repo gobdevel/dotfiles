@@ -25,6 +25,8 @@ alias scli_update='docker pull docker-registry:5000/slicercli:latest'
 alias scli='docker run --rm -i -t -v $HOME:/root  -v $PWD:/project docker-registry:5000/slicercli /usr/local/bin/slicercli -i'
 alias lsdev='docker ps -a | grep aos-dev | awk "{print \$(NF)}"'
 
+NVIM_APSTRA=$HOME/.config/nvim-chad
+alias avim='XDG_DATA_HOME=$NVIM_APSTRA/share XDG_CONFIG_HOME=$NVIM_APSTRA nvim'
 
 # CMAKE
 cmaked='cmake -DCMAKE_BUILD_TYPE=Debug '
