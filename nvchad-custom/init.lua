@@ -1,2 +1,2 @@
-vim.opt.listchars = {eol = '↲', tab = '▸ ', trail = '·', space = '·'}
+vim.opt.listchars = {tab = '▸ ', trail = '·', lead = '·'}
 vim.opt.list = true

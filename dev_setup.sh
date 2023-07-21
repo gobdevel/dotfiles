@@ -67,7 +67,6 @@ setup_dotfiles() {
     ln -sf "$DOTFILES/zshrc" "$HOME/.zshrc"
     ln -sf "$DOTFILES/zsh-alias" "$HOME/.zsh-alias"
     ln -sf "$DOTFILES/p10k.zsh" "$HOME/.p10k.zsh"
-    ln -sf "$DOTFILES/nvim" "$HOME/.config/nvim"
 }
 
 ensure_tmux() {
@@ -96,10 +95,8 @@ setup_nvim() {
     if [[ ! -f $NVIM_BIN ]]; then
         install_nvim
         git clone https://github.com/NvChad/NvChad "$HOME/bin/NvChad" --depth 1
-        ln -sf "$HOME/DOTFILES/nvchad-custom" "$HOME/bin/NvChad/lua/custom"
 
-        # TODO ensure_package npm nodejs
-        ensure_package shellcheck
+        ln -sf "$DOTFILES/nvchad-custom" "$HOME/bin/NvChad/lua/custom"
         rm -rf "$NVIM_APSTRA"
         mkdir -p "$NVIM_APSTRA/share"
         ln -sf "$HOME/bin/NvChad" "$NVIM_APSTRA/nvim"
@@ -135,8 +132,12 @@ uninstall() {
         "$HOME/.config/nvim"
 }
 
+update() {
+    echo "Running update..."
+}
+
 # Get the options
-while getopts ":hiup:" option; do
+while getopts ":hiupl:" option; do
     case $option in
         h) # display Help
             help
@@ -147,6 +148,8 @@ while getopts ":hiup:" option; do
             uninstall ;;
         p) # update
             update ;;
+        l) # update
+            exit ;;
         \?) # Invalid option
             echo "Error: Invalid option"
             help
