@@ -94,6 +94,7 @@ install_nvim() {
 setup_nvim() {
     if [[ ! -f $NVIM_BIN ]]; then
         install_nvim
+        ensure_package ripgrep
         git clone https://github.com/NvChad/NvChad "$HOME/bin/NvChad" --depth 1
 
         ln -sf "$DOTFILES/nvchad-custom" "$HOME/bin/NvChad/lua/custom"
