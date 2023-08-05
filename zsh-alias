@@ -12,6 +12,7 @@ alias gs="git status "
 alias gd="git diff "
 alias gds="git diff --staged"
 alias gcb="git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -d"
+alias gch="git checkout -b "
 
 
 # Find related
@@ -20,13 +21,17 @@ alias tfind='find . -name "*.tac" | xargs grep --color -i '
 alias cfind='find . -name "*.cpp" | xargs grep --color -i '
 alias hfind='find . -name "*.h" | xargs grep --color -i '
 
+# Docker related
+alias dp='docker ps'
+alias dpa='docker ps -a'
+
 # Apstra
 alias scli_update='docker pull docker-registry:5000/slicercli:latest'
 alias scli='docker run --rm -i -t -v $HOME:/root  -v $PWD:/project docker-registry:5000/slicercli /usr/local/bin/slicercli -i'
 alias lsdev='docker ps -a | grep aos-dev | awk "{print \$(NF)}"'
 
-NVIM_APSTRA=$HOME/.config/nvim-chad
-alias avim='XDG_DATA_HOME=$NVIM_APSTRA/share XDG_CONFIG_HOME=$NVIM_APSTRA nvim'
+NVIM_CONFIG=$HOME/.config/nvim-chad
+alias nvim='XDG_DATA_HOME=$NVIM_CONFIG/share XDG_CONFIG_HOME=$NVIM_CONFIG nvim'
 
 # CMAKE
 cmaked='cmake -DCMAKE_BUILD_TYPE=Debug '
@@ -42,31 +47,31 @@ alias dev2='ssh gobindp@10.24.128.76'
 
 # Docker function
 function start_dev {
-	curr_dir=$(basename $(pwd))
-	if [ "$curr_dir" != "leblon" -a "$curr_dir" != "aos" ]; then
-		echo "Must run from leblon or aos directory"
-		return 1
-	fi
+  curr_dir=$(basename $(pwd))
+  if [ "$curr_dir" != "leblon" -a "$curr_dir" != "aos" ]; then
+    echo "Must run from leblon or aos directory"
+    return 1
+  fi
 
-	if [ -z "$1" ]; then
-		echo "Usage start_dev <name>"
-		return 1
-	else
-		./tools/start_aos_dev_container --docker-run-options="-v $HOME/bootcamp/tacc_bootcamp:/bootcamp" -n $1
-	fi
+  if [ -z "$1" ]; then
+    echo "Usage start_dev <name>"
+    return 1
+  else
+    ./tools/start_aos_dev_container --docker-run-options="-v $HOME/bootcamp/tacc_bootcamp:/bootcamp" -n $1
+  fi
 }
 
 function start_dev_local {
-	curr_dir=$(basename $(pwd))
-	if [ "$curr_dir" != "leblon" -a "$curr_dir" != "aos" ]; then
-		echo "Must run from leblon or aos directory"
-		return 1
-	fi
+  curr_dir=$(basename $(pwd))
+  if [ "$curr_dir" != "leblon" -a "$curr_dir" != "aos" ]; then
+    echo "Must run from leblon or aos directory"
+    return 1
+  fi
 
-	if [[ $# -ne 2 ]]; then
-		echo "Usage start_dev <name> <image:tag>"
-		return 1
-	else
-		./tools/start_aos_dev_container --docker-run-options="-v $HOME/bootcamp/tacc_bootcamp:/bootcamp" -n $1 --docker-image="$2"
-	fi
+  if [[ $# -ne 2 ]]; then
+    echo "Usage start_dev <name> <image:tag>"
+    return 1
+  else
+    ./tools/start_aos_dev_container --docker-run-options="-v $HOME/bootcamp/tacc_bootcamp:/bootcamp" -n $1 --docker-image="$2"
+  fi
 }

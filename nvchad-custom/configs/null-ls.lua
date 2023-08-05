@@ -13,7 +13,9 @@ local sources = {
 	formatting.clang_format.with({
 		extra_args = { "--style", "Google" },
 	}),
-	formatting.beautysh,
+	formatting.beautysh.with({
+    extra_args = { "-i", "2" },
+  }),
 
 	lint.shellcheck,
 	lint.cpplint,
