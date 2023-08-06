@@ -111,6 +111,11 @@ export LC_ALL="en_US.UTF-8"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Export brew related stuff
+if [[ ${OSTYPE} == darwin* ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

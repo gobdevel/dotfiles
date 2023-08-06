@@ -10,6 +10,7 @@ local plugins = {
 				-- web dev
 				"python",
 				"cpp",
+				"json",
 				-- "vue", "svelte",
 
 				-- low level
@@ -43,7 +44,29 @@ local plugins = {
 				"stylua",
 				"clang-format",
 				"beautysh",
-        "cpplint",
+				"cpplint",
+			},
+		},
+	},
+
+	{
+		"nvim-tree/nvim-tree.lua",
+		opts = {
+			git = {
+				enable = true,
+			},
+
+			filters = {
+				dotfiles = true,
+			},
+
+			renderer = {
+				highlight_git = true,
+				icons = {
+					show = {
+						git = true,
+					},
+				},
 			},
 		},
 	},

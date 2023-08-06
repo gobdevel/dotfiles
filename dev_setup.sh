@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 # Author: Gobind Prasad
 # Initial config for new linux system
@@ -42,7 +42,7 @@ install_package() {
     ${APT} update  # To get the latest package lists
     ${APT} install "$package" -y
   else
-    ${APT} upgrade
+    ${APT} update
     ${APT} install "$package"
   fi
 }
@@ -60,11 +60,12 @@ ensure_package() {
 ensure_packages() {
   # Declare an array
   declare -a pkgs=(
-    "ripgrep rgrep"
+    "ripgrep rg"
     "zsh zsh"
     "curl curl"
     "git git"
-    "tmux tmux")
+    "fzf fzf"
+  "tmux tmux")
   for item in "${pkgs[@]}"; do
     # read each item to an array
     read -r -a pkg <<< "$item"
@@ -123,19 +124,30 @@ ensure_tmux() {
 }
 
 install_nvim() {
-  mkdir -p "$HOME/bin"
-  pushd "$HOME/bin" || exit $EXIT_FAILURE
-  echo "Downloading latest version of Neovim ..."
-  curl -L https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -o nvim.appimage
-  chmod 755 nvim.appimage
-  ./nvim.appimage --appimage-extract  &>/dev/null
-  ln -sf "$HOME/bin/squashfs-root/usr/bin/nvim" "$NVIM_BIN"
-  popd || exit $EXIT_FAILURE
+  if [[ ${OS_TYPE} == "Mac" ]]; then
+    ensure_package neovim nvim
+  else
+    mkdir -p "$HOME/bin"
+    pushd "$HOME/bin" || exit $EXIT_FAILURE
+    echo "Downloading latest version of Neovim ..."
+    curl -L https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -o nvim.appimage
+    chmod 755 nvim.appimage
+    ./nvim.appimage --appimage-extract  &>/dev/null
+    ln -sf "$HOME/bin/squashfs-root/usr/bin/nvim" "$NVIM_BIN"
+    popd || exit $EXIT_FAILURE
+  fi
 }
 
 setup_nvim() {
-  if [[ ! -f $NVIM_BIN ]]; then
+  if [[ ${OS_TYPE} == "Mac" ]]; then
     install_nvim
+  else
+    if [[ ! -f ${NVIM_BIN} ]]; then
+      install_nvim
+    fi
+  fi
+
+  if [[ ! -d $NVIM_CONF_DIR ]]; then
     git clone https://github.com/NvChad/NvChad "$HOME/bin/NvChad" --depth 1
 
     ln -sf "$DOTFILES/nvchad-custom" "$HOME/bin/NvChad/lua/custom"
@@ -146,11 +158,11 @@ setup_nvim() {
 }
 
 install() {
-  ensure_packages
   ensure_oh_my_zsh
+  setup_dotfiles
+  ensure_packages
   ensure_tmux
   ensure_ssh_keys
-  setup_dotfiles
   setup_nvim
 }
 
