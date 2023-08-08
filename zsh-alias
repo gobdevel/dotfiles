@@ -31,7 +31,7 @@ alias scli='docker run --rm -i -t -v $HOME:/root  -v $PWD:/project docker-regist
 alias lsdev='docker ps -a | grep aos-dev | awk "{print \$(NF)}"'
 
 NVIM_CONFIG=$HOME/.config/nvim-chad
-alias nvim='XDG_DATA_HOME=$NVIM_CONFIG/share XDG_CONFIG_HOME=$NVIM_CONFIG nvim'
+alias vim='XDG_DATA_HOME=$NVIM_CONFIG/share XDG_CONFIG_HOME=$NVIM_CONFIG nvim'
 
 # CMAKE
 cmaked='cmake -DCMAKE_BUILD_TYPE=Debug '

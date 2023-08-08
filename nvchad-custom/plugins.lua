@@ -34,13 +34,20 @@ local plugins = {
 	},
 
 	{
+		"joechrisellis/lsp-format-modifications.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+	},
+
+	{
 		"williamboman/mason.nvim",
 		opts = {
 			ensure_installed = {
 				"clangd",
 				"python-lsp-server",
 				"shellcheck",
-				"black",
+				"yapf",
 				"stylua",
 				"clang-format",
 				"beautysh",
