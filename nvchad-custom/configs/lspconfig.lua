@@ -39,6 +39,7 @@ end
 -- Without the loop, you would have to manually set up each LSP
 
 lspconfig.pylsp.setup {
+  root_dir = lspconfig.util.root_pattern('aos', 'leblon'),
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
