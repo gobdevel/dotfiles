@@ -166,6 +166,11 @@ install() {
   setup_nvim
 }
 
+install_neovim() {
+  ensure_packages
+  setup_nvim
+}
+
 uninstall() {
   # Remove bin NVIM
   rm -rf "$HOME/bin"
@@ -190,7 +195,7 @@ update() {
 }
 
 # Get the options
-while getopts ":hiure:" option; do
+while getopts ":hiurev:" option; do
   case $option in
     h) # display Help
       help
@@ -201,6 +206,8 @@ while getopts ":hiure:" option; do
       update ;;
     r) # update
       uninstall ;;
+    v) # Neo Vim Only
+      install_neovim ;;
     e) # update
       exit ;;
     \?) # Invalid option
