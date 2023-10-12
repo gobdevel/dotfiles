@@ -27,7 +27,7 @@ alias dpa='docker ps -a'
 
 # Apstra
 alias scli_update='docker pull docker-registry:5000/slicercli:latest'
-alias scli='docker run --rm -i -t -v $HOME:/root  -v $PWD:/project docker-registry:5000/slicercli /usr/local/bin/slicercli -i'
+alias scli='docker run --rm -i -t -v $HOME/.slicerconfig:/root/.slicerconfig  -v $HOME/slicer_topo:/project docker-registry:5000/slicercli /usr/local/bin/slicercli -i'
 alias lsdev='docker ps -a | grep aos-dev | awk "{print \$(NF)}"'
 
 NVIM_CONFIG=$HOME/.config/nvim-chad
@@ -74,4 +74,16 @@ function start_dev_local {
   else
     ./tools/start_aos_dev_container --docker-run-options="-v $HOME/bootcamp/tacc_bootcamp:/bootcamp" -n $1 --docker-image="$2"
   fi
+}
+
+function re_cont {
+  curr_dir=$(basename $(pwd))
+  if [ "$curr_dir" != "leblon" -a "$curr_dir" != "aos" ]; then
+    echo "Must run from leblon or aos directory"
+    return 1
+  fi
+
+  container_name="$(dirname "$curr_dir")"
+  docker rm "$container_name"
+  start_dev "$container_name"
 }

@@ -10,10 +10,10 @@ local sources = {
 	formatting.prettier,
 	formatting.stylua,
 	formatting.yapf,
-	formatting.clang_format.with({
-		extra_args = { "--style", "Google" },
-	}),
-
+	-- formatting.clang_format.with({
+	-- 	extra_args = { "--style", "Google" },
+	-- }),
+	--
 	formatting.beautysh.with({
 		extra_args = { "-i", "2" },
 	}),
