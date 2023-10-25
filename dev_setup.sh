@@ -111,6 +111,7 @@ setup_dotfiles() {
   ln -sf "$DOTFILES/zshrc" "$HOME/.zshrc"
   ln -sf "$DOTFILES/zsh-alias" "$HOME/.zsh-alias"
   ln -sf "$DOTFILES/p10k.zsh" "$HOME/.p10k.zsh"
+  ln -sf "$DOTFILES/clang-format" "$HOME/.clang-format"
 }
 
 ensure_tmux() {
