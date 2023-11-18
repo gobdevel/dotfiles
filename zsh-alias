@@ -48,17 +48,17 @@ alias dev2='ssh gobindp@10.24.128.76'
 # Docker function
 function start_dev {
   curr_dir=$(basename $(pwd))
+  parent_dir="$(dirname $(pwd))"
+  parent_dir=$(basename "$parent_dir")
   if [ "$curr_dir" != "leblon" -a "$curr_dir" != "aos" ]; then
     echo "Must run from leblon or aos directory"
     return 1
   fi
 
-  if [ -z "$1" ]; then
-    echo "Usage start_dev <name>"
-    return 1
-  else
-    ./tools/start_aos_dev_container --docker-run-options="-v $HOME/bootcamp/tacc_bootcamp:/bootcamp" -n $1
+  if [[ $# -eq 1 ]]; then
+    parent_dir="$1"
   fi
+  ./tools/start_aos_dev_container -n $parent_dir
 }
 
 function start_dev_local {
@@ -72,7 +72,7 @@ function start_dev_local {
     echo "Usage start_dev <name> <image:tag>"
     return 1
   else
-    ./tools/start_aos_dev_container --docker-run-options="-v $HOME/bootcamp/tacc_bootcamp:/bootcamp" -n $1 --docker-image="$2"
+    ./tools/start_aos_dev_container --docker-run-options="-v $HOME/work/tacc_bootcamp:/bootcamp" -n $1 --docker-image="$2"
   fi
 }
 
