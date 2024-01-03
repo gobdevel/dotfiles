@@ -131,10 +131,17 @@ install_nvim() {
     mkdir -p "$HOME/bin"
     pushd "$HOME/bin" || exit $EXIT_FAILURE
     echo "Downloading latest version of Neovim ..."
-    curl -L https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -o nvim.appimage
-    chmod 755 nvim.appimage
-    ./nvim.appimage --appimage-extract  &>/dev/null
-    ln -sf "$HOME/bin/squashfs-root/usr/bin/nvim" "$NVIM_BIN"
+    # Check what kind of processor is, Ubuntu on Macos as Docker
+    processor=$(lscpu | grep Architecture | awk '{print $2}')
+    if [[ ${processor} == "aarch64" ]]; then
+      sudo add-apt-repository ppa:neovim-ppa/stable -y
+	    ensure_package neovim neovim
+    else
+        curl -L https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -o nvim.appimage
+        chmod 755 nvim.appimage
+        ./nvim.appimage --appimage-extract  &>/dev/null
+        ln -sf "$HOME/bin/squashfs-root/usr/bin/nvim" "$NVIM_BIN"
+    fi
     popd || exit $EXIT_FAILURE
   fi
 }
