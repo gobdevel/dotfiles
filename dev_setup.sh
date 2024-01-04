@@ -26,12 +26,13 @@ help() {
   # Display Help
   echo "New Developer Linux Setup Script"
   echo
-  echo "Syntax: $PROGNAME [-i|h|u|r|e]"
+  echo "Syntax: $PROGNAME [-i|h|u|r|e|v]"
   echo "options:"
   echo "h     Help."
   echo "i     Install."
   echo "u     Update."
   echo "r     Uninstall."
+  echo "v     vim only."
   echo "e     Exit."
   echo
 }

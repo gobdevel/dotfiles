@@ -14,7 +14,6 @@ local sources = {
 	-- formatting.clang_format.with({
 	-- 	extra_args = { "-style", "file" },
 	-- }),
-
 	formatting.beautysh.with({
 		extra_args = { "-i", "2" },
 	}),
