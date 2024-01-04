@@ -34,8 +34,8 @@ NVIM_CONFIG=$HOME/.config/nvim-chad
 alias vim='XDG_DATA_HOME=$NVIM_CONFIG/share XDG_CONFIG_HOME=$NVIM_CONFIG nvim'
 
 # CMAKE
-cmaked='cmake -DCMAKE_BUILD_TYPE=Debug '
-cmaker='cmake -DCMAKE_BUILD_TYPE=Release '
+alias cmaked='cmake -DCMAKE_BUILD_TYPE=Debug '
+alias cmaker='cmake -DCMAKE_BUILD_TYPE=Release '
 
 # Server
 alias dev='ssh gobindp@gobindp.dev.dc1.apstra.com'
@@ -83,7 +83,7 @@ function re_cont {
     return 1
   fi
 
-  container_name="$(dirname "$curr_dir")"
+  container_name=$(basename "$(dirname "$(pwd)")")
   docker rm "$container_name"
   start_dev "$container_name"
 }
