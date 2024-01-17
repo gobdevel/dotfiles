@@ -25,6 +25,11 @@ alias hfind='find . -name "*.h" | xargs grep --color -i '
 alias dp='docker ps'
 alias dpa='docker ps -a'
 
+# Python Related
+alias venv='python3 -m .venv '
+alias venva='source .venv/bin/activate'
+alias venvd='deactivate'
+
 # Apstra
 alias scli_update='docker pull docker-registry:5000/slicercli:latest'
 alias scli='docker run --rm -i -t -v $HOME/.slicerconfig:/root/.slicerconfig  -v $HOME/slicer_topo:/project docker-registry:5000/slicercli /usr/local/bin/slicercli -i'
