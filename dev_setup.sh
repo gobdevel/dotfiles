@@ -113,6 +113,9 @@ setup_dotfiles() {
   ln -sf "$DOTFILES/zsh-alias" "$HOME/.zsh-alias"
   ln -sf "$DOTFILES/p10k.zsh" "$HOME/.p10k.zsh"
   ln -sf "$DOTFILES/clang-format" "$HOME/.clang-format"
+
+  # A basic vimrc file
+  wget https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim -O $HOME/.vimrc
 }
 
 ensure_tmux() {
@@ -171,7 +174,6 @@ install() {
   ensure_packages
   ensure_tmux
   ensure_ssh_keys
-  setup_nvim
 }
 
 install_neovim() {
