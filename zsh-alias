@@ -17,7 +17,7 @@ alias gch="git checkout -b "
 
 # Find related
 alias pfind='find . -name "*.py" | xargs grep --color -i '
-alias tfind='find . -name "*.tac" | xargs grep --color -i '
+alias tfind='find . -name "*.tac" -o -name "*.tin" | xargs grep --color -i '
 alias cfind='find . -name "*.cpp" | xargs grep --color -i '
 alias hfind='find . -name "*.h" | xargs grep --color -i '
 
@@ -31,8 +31,8 @@ alias venva='source .venv/bin/activate'
 alias venvd='deactivate'
 
 # Apstra
-alias scli_update='docker pull docker-registry:5000/slicercli:latest'
-alias scli='docker run --rm -i -t -v $HOME/.slicerconfig:/root/.slicerconfig  -v $HOME/slicer_topo:/project docker-registry:5000/slicercli /usr/local/bin/slicercli -i'
+alias scli_update='docker pull docker-registry-ng.dc1.apstra.com:5000/slicercli:latest'
+alias scli='docker run --rm -i -t -v $HOME/.slicerconfig:/root/.slicerconfig  -v $HOME/slicer_topo:/project docker-registry-ng.dc1.apstra.com:5000/slicercli /usr/local/bin/slicercli -i'
 alias lsdev='docker ps -a | grep aos-dev | awk "{print \$(NF)}"'
 
 NVIM_CONFIG=$HOME/.config/nvim-chad
