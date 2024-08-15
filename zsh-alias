@@ -13,6 +13,7 @@ alias gd="git diff "
 alias gds="git diff --staged"
 alias gcb="git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -d"
 alias gch="git checkout -b "
+alias gcaos="git clone git@bitbucket.org:apstrktr/leblon.git aos"
 
 
 # Find related
@@ -31,8 +32,8 @@ alias venva='source .venv/bin/activate'
 alias venvd='deactivate'
 
 # Apstra
-alias scli_update='docker pull docker-registry-ng.dc1.apstra.com:5000/slicercli:latest'
-alias scli='docker run --rm -i -t -v $HOME/.slicerconfig:/root/.slicerconfig  -v $HOME/slicer_topo:/project docker-registry-ng.dc1.apstra.com:5000/slicercli /usr/local/bin/slicercli -i'
+alias scli_update='docker pull docker-registry-ng.dc1.apstra.com:5000/slicercli/slicercli:latest'
+alias scli='docker run --rm -i -t -v $HOME/.slicerconfig:/root/.slicerconfig  -v $HOME/slicer_topo:/project docker-registry-ng.dc1.apstra.com:5000/slicercli/slicercli /usr/local/bin/slicercli -i'
 alias lsdev='docker ps -a | grep aos-dev | awk "{print \$(NF)}"'
 
 NVIM_CONFIG=$HOME/.config/nvim-chad
