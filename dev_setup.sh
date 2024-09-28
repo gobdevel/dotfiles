@@ -79,6 +79,7 @@ ensure_oh_my_zsh() {
     echo "Installing oh my zsh ..."
     echo "exit" | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-autocomplete
+    git clone --depth 1 -- https://github.com/zsh-users/zsh-autosuggestions.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k
   fi
@@ -113,6 +114,7 @@ setup_dotfiles() {
   ln -sf "$DOTFILES/zsh-alias" "$HOME/.zsh-alias"
   ln -sf "$DOTFILES/p10k.zsh" "$HOME/.p10k.zsh"
   ln -sf "$DOTFILES/clang-format" "$HOME/.clang-format"
+  ln -sf "$DOTFILES/zsh-custom.zsh" "$OH_MY_ZSH/custom/zsh-custom.zsh"
 
   # A basic vimrc file
   wget https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim -O $HOME/.vimrc
